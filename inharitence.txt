@@ -1,0 +1,398 @@
+252:multipleinheritance
+class Employee:
+    def __init__(self):
+        self.emp_id = 0
+        self.name = ""
+
+    def get_data(self):
+        self.emp_id = int(input("Enter Employee ID: "))
+        self.name = input("Enter Employee Name: ")
+
+    def put_data(self):
+        print("Employee ID:", self.emp_id)
+        print("Employee Name:", self.name)
+
+
+class Attendance(Employee):
+    def get_data(self):
+        super().get_data()
+
+        self.total = int(input("Enter Total Days: "))
+        self.ptotal = int(input("Enter Total Present Days: "))
+
+        self.atotal = self.total - self.ptotal
+
+    def put_data(self):
+        super().put_data()
+
+        print("Total Days:", self.total)
+        print("Present Days:", self.ptotal)
+        print("Absent Days:", self.atotal)
+
+
+class Salary(Attendance):
+    def get_data(self):
+        super().get_data()
+
+        self.bs = int(input("Enter Basic Salary: "))
+
+    def calculate_salary(self):
+
+        if self.bs < 5000:
+            self.hra = self.bs * 0.10
+            self.da = self.bs * 0.20
+            self.pf = self.bs * 0.05
+
+        elif self.bs < 10000:
+            self.hra = self.bs * 0.20
+            self.da = self.bs * 0.40
+            self.pf = self.bs * 0.10
+
+        else:
+            self.hra = self.bs * 0.30
+            self.da = self.bs * 0.60
+            self.pf = self.bs * 0.15
+
+      
+        self.ns = self.bs + self.hra + self.da - self.pf
+
+        self.ns = (self.ns * self.ptotal) / self.total
+
+    def put_data(self):
+        super().put_data()
+
+        print("Basic Salary:", self.bs)
+        print("HRA:", self.hra)
+        print("DA:", self.da)
+        print("PF:", self.pf)
+        print("Net Salary:", self.ns)
+
+
+
+emp = Salary()
+
+emp.get_data()
+
+emp.calculate_salary()
+
+emp.put_data()
+'''
+Employee Name: hemanhi
+Total Days: 4
+Present Days: 2
+Absent Days: 2
+Basic Salary: 20000
+HRA: 6000.0
+DA: 12000.0
+PF: 3000.0
+Net Salary: 17500.0
+'''
+==========================================================
+
+252.class student:
+
+    def __init__(self):
+        self.rno=21
+        self.name = "Vashi"
+        self.age = 19
+        self.marks=[20,20,20]
+    def display(self):
+        print("Name :", self.name)
+        print("Age :", self.age)     
+    def getData(self):
+        self.rno = int(input("Enter the Roll Number : "))
+        self.name = input("Enter the Name : ")
+        self.age = int(input("Enter the Age : "))
+
+        self.marks = []
+        for i in range(1, 4):
+            self.marks.append(int(input("Enter the Marks : ")))
+    def getData1(self,rno,name,age):
+        self.rno = rno
+        self.name = name
+        self.age = age
+
+        self.marks = []
+        for i in range(1, 4):
+            self.marks.append(int(input("Enter the Marks : ")))
+    def calculate(self):
+        self.total = sum(self.marks)
+        self.per = self.total / 3
+
+    def putData(self):
+        print("Roll No :", self.rno)
+        print("Name :", self.name)
+        print("Age :", self.age)
+        print("Marks :", self.marks)
+        print("Total :", self.total)
+        print("Percentage :", self.per)
+
+
+
+s1 = student()
+s1.display()
+
+s1.getData()
+s1.calculate()
+s1.putData()
+'''Name : Vashi
+Age : 19
+Enter the Roll Number : 2
+Enter the Name : hepi
+Enter the Age : 18
+Enter the Marks : 50
+Enter the Marks : 34
+Enter the Marks : 54
+Roll No : 2
+Name : hepi
+Age : 18
+Marks : [50, 34, 54]
+Total : 138
+Percentage : 46.0'''
+====================================================
+
+253.class employee:
+    def __init__(self):
+        self.emp_id = 0
+        self.name = ""
+        self.bs = 0
+    def __init__(self,emp_id,name,bs):
+        self.emp_id = int(input("Enter ID: "))
+        self.name = input("Enter Name: ")
+        self.sal = float(input("Enter Salary: "))
+        self.hra = float(input("Enter HRA: "))
+        self.da = float(input("Enter DA: "))
+        self.pf = float(input("Enter PF: "))
+    def cal(self):
+        if self.bs<5000:
+            self.hra=self.bs*0.10
+            self.da=self.bs*0.20
+            self.pf=self.bs*0.05
+        elif self.bs>=5000 and self.bs<10000:
+            self.hra=self.bs*0.20
+            self.da=self.bs*0.40
+            self.pf=self.bs*0.10
+        else:
+            self.hra=self.bs*0.30
+            self.da=self.bs*0.60
+            self.pf=self.bs*0.15
+        self.ns=self.bs+self.hra+self.da-self.pf
+
+
+
+n = int(input("Enter number of employees: "))
+emp=[]
+for i in range(n):
+    e= emp()
+    e.getData()
+    e.cal()
+    emp.append(e)
+print("Employee details")
+
+for e in emp:
+    e.putData()
+    print("---------------")
+    def putData(self):
+        print("Emp no is:", self.emp_id)
+        print("Name is:", self.name)
+        print("Basic Salary is:", self.bs)
+        print("HRA is:", self.hra)
+        print("DA is:", self.da)
+        print("PF is:", self.pf)
+        print("Net Salary is:", self.ns)
+
+====================================================
+
+254.records = []
+class employee:
+    def insert_record(self):
+        emp_id = int(input("Enter ID: "))
+        name = input("Enter Name: ")
+        sal = int(input("Enter Salary: "))
+        hra = int(input("Enter HRA: "))
+        da = int(input("Enter DA: "))
+        pf = int(input("Enter PF: "))
+        record = {
+            "id": emp_id,
+            "name": name,
+            "sal": sal,
+            "hra": hra,
+            "da": da,
+            "pf": pf
+        }
+
+        records.append(record)
+        print("Record inserted successfully!")
+
+    def display(self):
+        print("\n--- Employee Records ---")
+        for r in records:
+            print("ID:", r["id"])
+            print("Name:", r["name"])
+            print("Salary:", r["sal"])
+            print("HRA:", r["hra"])
+            print("DA:", r["da"])
+            print("PF:", r["pf"])
+            print("----------------------")
+    def calculate_salary(self):
+        print("\n--- Salary Calculation ---")
+
+        for r in records:
+            sal = r["sal"]
+            if sal <= 5000:
+                hra = sal * 0.10
+                da = sal * 0.05
+            elif sal <= 7000:
+                hra = sal * 0.15
+                da = sal * 0.10
+            elif sal <= 10000:
+                hra = sal * 0.20
+                da = sal * 0.15
+            else:
+                hra = sal * 0.25
+                da = sal * 0.20
+
+            gross = sal + hra + da
+            pf = sal * 0.12
+            net = gross - pf
+
+            print("ID:", r["id"])
+            print("Name:", r["name"])
+            print("Basic Salary:", sal)
+            print("HRA:", hra)
+            print("DA:", da)
+            print("PF:", pf)
+            print("Gross Salary:", gross)
+            print("Net Salary:", net)
+            print("----------------------")
+obj.display()
+obj.calculate_salary()
+============================================
+1. Single Inheritance
+
+
+class Father:
+    def show(self):
+        print("This is Father class")
+
+class Son(Father):
+    def display(self):
+        print("This is Son class")
+
+s = Son()
+s.show()
+s.display()
+
+output::
+
+This is Father class
+This is Son class
+============================================
+2. Multiple Inheritance
+
+class Father:
+    def show(self):
+        print("Father class")
+
+class Mother:
+    def display(self):
+        print("Mother class")
+
+class Child(Father, Mother):
+    def result(self):
+        print("Child class")
+
+c = Child()
+c.show()
+c.display()
+c.result()
+
+output::
+Father class
+Mother class
+Child class
+===========================================
+3. Multilevel Inheritance
+
+class Grandfather:
+    def show(self):
+        print("Grandfather class")
+
+class Father(Grandfather):
+    def display(self):
+        print("Father class")
+
+class Son(Father):
+    def result(self):
+        print("Son class")
+
+s = Son()
+s.show()
+s.display()
+s.result()
+
+output::
+Grandfather class
+Father class
+Son class
+
+================================================
+4. Hierarchical Inheritance
+
+class Father:
+    def show(self):
+        print("Father class")
+
+class Son(Father):
+    def display(self):
+        print("Son class")
+
+class Daughter(Father):
+    def result(self):
+        print("Daughter class")
+
+s = Son()
+s.show()
+s.display()
+
+d = Daughter()
+d.show()
+d.result()
+
+output::
+Father class
+Son class
+Father class
+Daughter class
+
+==========================================
+
+5. Hybrid Inheritance
+
+class A:
+    def show(self):
+        print("Class A")
+
+class B(A):
+    def display(self):
+        print("Class B")
+
+class C(A):
+    def result(self):
+        print("Class C")
+
+class D(B, C):
+    def output(self):
+        print("Class D")
+
+d = D()
+d.show()
+d.display()
+d.result()
+d.output()
+
+output::
+Class A
+Class B
+Class C
+Class D

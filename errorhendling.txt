@@ -1,0 +1,222 @@
+242:error handling 
+try:
+    a = 5
+    b = 2
+    c = 0
+    d = a + b
+    e = a / c
+    ans = a + b + c
+    f = int("ebc")
+    print(a)
+    print(b)
+    print(c)
+
+except ZeroDivisionError:
+    print("Zero error")
+
+except ValueError:
+    print("Value error")
+
+print("Hello world")
+print(d)
+'''
+Zero error
+Hello world
+7
+'''
+=====================================================================
+243:error handling age-user
+class AgeError(Exception):
+    pass
+
+
+try:
+    age = int(input("Enter your age: "))
+
+    if age < 18:
+        raise AgeError("Age must be 18 or above")
+
+    print("You are eligible.")
+
+except AgeError as e:
+    print("Error:", e)
+'''
+Enter your age: 22
+You are eligible.
+'''
+=====================================================================
+244:errorhandling quntityerror
+class PriceError(Exception):
+    pass
+class QuantityError(Exception):
+    pass
+try:
+    price = int(input("Enter product price: "))
+    quantity = int(input("Enter product quantity: "))
+    if not(price < 100 and price<1000):
+        raise PriceError("Price must be 1 digit")
+    elif quantity <= 0:
+        raise QuantityError("Quantity must be greater than 0")
+    else:
+        print("Product price and quantity are valid.")
+        print("Price:", price)
+        print("Quantity:", quantity)
+except PriceError as e:
+    print("Price Error:", e)
+except QuantityError as e:
+    print("Quantity Error:", e)
+finally:
+    print("Success: Program execution completed.")
+'''
+Enter product price: 999
+Enter product quantity: 2
+Price Error: Price must be 1 digit
+Success: Program execution completed.
+'''
+===============================================================
+245:user-error
+class ProductPriceError(Exception):
+    pass
+
+
+try:
+    price = int(input("Enter product price: "))
+
+    if not(price < 100 and price<1000):
+        raise ProductPriceError("Price error")
+
+    print("Product price is valid:", price)
+
+except ProductPriceError as e:
+    print("Error:", e)
+'''
+Enter product price: 1000
+Error: Price error
+'''
+===============================================================
+
+Try-Except Example
+
+try:
+    a = int(input("Enter a number: "))
+    b = int(input("Enter another number: "))
+    print("Division =", a / b)
+
+except Exception as e:
+    print("Error:", e)
+==================================================================
+2. ZeroDivisionError
+try:
+    a = 10
+    b = 0
+    print(a / b)
+
+except ZeroDivisionError:
+    print("Cannot divide by zero")
+
+Output:
+
+Cannot divide by zero
+=====================================================================
+3. ValueError
+try:
+    a = int(input("Enter a number: "))
+    print(a)
+
+except ValueError:
+    print("Please enter a valid integer")
+============================================================
+4. IndexError
+try:
+    a = [10, 20, 30]
+    print(a[5])
+
+except IndexError:
+    print("List index is out of range")
+
+Output:
+
+List index is out of range
+=============================================================
+5. NameError
+try:
+    print(x)
+
+except NameError:
+    print("Variable is not defined")
+
+Output:
+
+Variable is not defined
+==============================================================
+6. TypeError
+try:
+    a = 10 + "Hello"
+    print(a)
+
+except TypeError:
+    print("Cannot add integer and string")
+
+Output:
+
+Cannot add integer and string
+==================================================================
+7. Finally Block
+try:
+    a = 10
+    b = 2
+    print(a / b)
+
+except ZeroDivisionError:
+    print("Cannot divide by zero")
+
+finally:
+    print("Program completed")
+
+Output:
+
+5.0
+Program completed
+===========================================================================
+8. Else Block
+try:
+    a = 10
+    b = 2
+    print(a / b)
+
+except ZeroDivisionError:
+    print("Cannot divide by zero")
+
+else:
+    print("No error occurred")
+
+Output:
+
+5.0
+No error occurred
+==============================================================================
+9. Multiple Exceptions
+try:
+    a = int(input("Enter a number: "))
+    b = int(input("Enter another number: "))
+    print(a / b)
+
+except ValueError:
+    print("Invalid input")
+
+except ZeroDivisionError:
+    print("Cannot divide by zero")
+10. User-Defined Exception Using raise
+class AgeError(Exception):
+    pass
+
+try:
+    age = int(input("Enter your age: "))
+
+    if age < 18:
+        raise AgeError("Age must be 18 or above")
+
+    print("Eligible")
+
+except AgeError as e:
+    print(e)
