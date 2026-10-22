@@ -1,0 +1,124 @@
+1)))))Exception Handling Using try and except
+Program
+try:
+    a = int(input("Enter first number: "))
+    b = int(input("Enter second number: "))
+
+    c = a / b
+    print("Division =", c)
+
+except ZeroDivisionError:
+    print("Cannot divide by zero")
+
+
+Output 1:
+When no error occurs
+Enter first number: 10
+Enter second number: 2
+Division = 5.0
+
+Output 2: 
+When an error occurs
+Enter first number: 10
+Enter second number: 0
+Cannot divide by zero
+
+=====================================================================
+Program 2: Exception Handling Using try, except, and else
+Program
+
+
+try:
+    a = int(input("Enter first number: "))
+    b = int(input("Enter second number: "))
+
+    result = a / b
+
+except ZeroDivisionError:
+    print("Cannot divide by zero")
+
+except ValueError:
+    print("Please enter valid numbers")
+
+else:
+    print("Result =", result)
+    print("No error occurred")
+
+Output
+Enter first number: 20
+Enter second number: 4
+Result = 5.0
+No error occurred
+
+======================================================================
+Program 3: Exception Handling Using finally Program
+try:
+    a = 10
+    b = 2
+
+    result = a / b
+    print("Result =", result)
+
+except ZeroDivisionError:
+    print("Cannot divide by zero")
+
+finally:
+    print("Program execution completed")
+Output
+Result = 5.0
+Program execution completed
+
+==========================================================================
+Program 4: Handling Multiple Exceptions
+Program
+try:
+    a = int(input("Enter first number: "))
+    b = int(input("Enter second number: "))
+
+    print("Division =", a / b)
+
+except ValueError:
+    print("Invalid input! Enter integers only.")
+
+except ZeroDivisionError:
+    print("Error! Cannot divide by zero.")
+
+except Exception as e:
+    print("Unexpected error:", e)
+
+Output 1: ValueError
+Enter first number: hello
+Invalid input! Enter integers only.
+
+Output 2: ZeroDivisionError
+Enter first number: 10
+Enter second number: 0
+Error! Cannot divide by zero.
+====================================================================================
+
+Program 5: User-Defined Exception Using raise
+
+class AgeError(Exception):
+    pass
+
+try:
+    age = int(input("Enter your age: "))
+
+    if age < 18:
+        raise AgeError("Age must be 18 or above")
+
+    print("Eligible")
+
+except ValueError:
+    print("Please enter a valid age")
+
+except AgeError as e:
+    print("Error:", e)
+
+Output 1
+Enter your age: 16
+Error: Age must be 18 or above
+
+Output 2
+Enter your age: 20
+Eligible
